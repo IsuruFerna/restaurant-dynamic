@@ -10,21 +10,34 @@ const opacityAfter = "0";
 const bgColor = function (opacity) {
    slides.forEach((element) => {
       // element.style.transition = "background-color .8s ease-in-out";
-      element.style.transition = "opacity 1s cubic-bezier(.17,.67,.83,.67)";
+      element.style.transition = "opacity 1s ease-in-out";
       // element.style.backgroundColor = color;
       element.style.opacity = opacity;
    });
 };
 
 // rotate main
-function rotate() {
+function rotate(event) {
+   console.log("this is target: ", event.target);
    rotation += 120;
 
    bgColor(opacityAfter);
    setTimeout(function () {
       bgColor(opacityBefore);
-   }, 250);
+   }, 500);
 
-   holder.style.transition = "transform 1s cubic-bezier(.17,.67,.83,.67)";
+   holder.style.transition = "transform 1s ease-in-out";
    holder.style.transform = `rotateY(${rotation}deg)`;
 }
+
+let btnsNav = document.querySelectorAll(".nav-link");
+console.log(btnsNav);
+for (let i = 0; i < btnsNav.length; i++) {
+   btnsNav[i].addEventListener("click", function () {
+      console.log("clicked on: ", i);
+   });
+}
+
+document.addEventListener("click", (e) => {
+   console.log(e.target);
+});
