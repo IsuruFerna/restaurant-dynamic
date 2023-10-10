@@ -1,7 +1,9 @@
 let rotation = 0;
+let rotateBackWord = 0;
 
 const holder = document.querySelector("#holder");
 const slides = holder.querySelectorAll(".rotate");
+const nav = holder.querySelector(".nav");
 const colorBefore = `rgba(255, 255, 0, 1)`;
 const colorAfter = `rgba(255, 255, 0, 0)`;
 const opacityBefore = "1";
@@ -17,9 +19,10 @@ const bgColor = function (opacity) {
 };
 
 // rotate main
-function rotate(event) {
-   console.log("this is target: ", event.target);
-   rotation += 120;
+function rotate(rotation) {
+   // console.log("this is target: ", event.target);
+   // rotation += 120;
+   // rotateBackWord -= 120;
 
    bgColor(opacityAfter);
    setTimeout(function () {
@@ -28,6 +31,8 @@ function rotate(event) {
 
    holder.style.transition = "transform 1s ease-in-out";
    holder.style.transform = `rotateY(${rotation}deg)`;
+   // nav.style.transition = "transform 1s ease-in-out";
+   // nav.style.transform = `translate3d(0, 0, 3em) rotateY(${rotateBackWord}deg)`;
 }
 
 let btnsNav = document.querySelectorAll(".nav-link");
@@ -35,6 +40,15 @@ console.log(btnsNav);
 for (let i = 0; i < btnsNav.length; i++) {
    btnsNav[i].addEventListener("click", function () {
       console.log("clicked on: ", i);
+      let rotation = 0;
+      if (i === 0) {
+         rotation = -120;
+      } else if (i === 1) {
+         rotation = 0;
+      } else {
+         rotation = 120;
+      }
+      rotate(rotation);
    });
 }
 
