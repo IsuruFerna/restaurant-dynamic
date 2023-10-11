@@ -11,22 +11,22 @@ const opacityAfter = "0";
 
 const bgColor = function (opacity) {
    slides.forEach((element) => {
-      // element.style.transition = "background-color .8s ease-in-out";
-      element.style.transition = "opacity 1s ease-in-out";
-      // element.style.backgroundColor = color;
-      element.style.opacity = opacity;
+      element.style.transition = "background-color .8s ease-in-out";
+      // element.style.transition = "opacity 1s ease-in-out";
+      element.style.backgroundColor = opacity;
+      // element.style.opacity = opacity;
    });
 };
 
 // rotate main
 function rotate(rotation) {
    // console.log("this is target: ", event.target);
-   rotation += 120;
-   rotateBackWord -= 120;
+   // rotation += 120;
+   // rotateBackWord -= 120;
 
-   bgColor(opacityAfter);
+   bgColor(colorAfter);
    setTimeout(function () {
-      bgColor(opacityBefore);
+      bgColor(colorBefore);
    }, 500);
 
    holder.style.transition = "transform 1s ease-in-out";
@@ -37,20 +37,20 @@ function rotate(rotation) {
 
 let btnsNav = document.querySelectorAll(".nav-link");
 console.log(btnsNav);
-// for (let i = 0; i < btnsNav.length; i++) {
-//    btnsNav[i].addEventListener("click", function () {
-//       console.log("clicked on: ", i);
-//       let rotation = 0;
-//       if (i === 0) {
-//          rotation = -120;
-//       } else if (i === 1) {
-//          rotation = 0;
-//       } else {
-//          rotation = 120;
-//       }
-//       rotate(rotation);
-//    });
-// }
+for (let i = 0; i < btnsNav.length; i++) {
+   btnsNav[i].addEventListener("click", function () {
+      console.log("clicked on: ", i);
+      let rotation = 0;
+      if (i === 0) {
+         rotation = -120;
+      } else if (i === 1) {
+         rotation = 0;
+      } else {
+         rotation = 120;
+      }
+      rotate(rotation);
+   });
+}
 
 document.addEventListener("click", (e) => {
    console.log(e.target);
