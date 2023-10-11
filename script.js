@@ -2,19 +2,21 @@ let rotation = 0;
 let rotateBackWord = 0;
 
 const holder = document.querySelector("#holder");
-const slides = holder.querySelectorAll(".rotate");
-const nav = holder.querySelector(".nav");
+const slides = document.querySelectorAll(".rotate");
+const nav = document.querySelector(".nav");
 const colorBefore = `rgba(255, 255, 0, 1)`;
 const colorAfter = `rgba(255, 255, 0, 0)`;
 const opacityBefore = "1";
 const opacityAfter = "0";
 
+console.log("out side holder", holder);
+
 const bgColor = function (opacity) {
    slides.forEach((element) => {
-      element.style.transition = "background-color .8s ease-in-out";
-      // element.style.transition = "opacity 1s ease-in-out";
-      element.style.backgroundColor = opacity;
-      // element.style.opacity = opacity;
+      // element.style.transition = "background-color .8s ease-in-out";
+      element.style.transition = "opacity 1s ease-in-out";
+      // element.style.backgroundColor = opacity;
+      element.style.opacity = opacity;
    });
 };
 
@@ -24,11 +26,12 @@ function rotate(rotation) {
    // rotation += 120;
    // rotateBackWord -= 120;
 
-   bgColor(colorAfter);
+   bgColor(opacityAfter);
    setTimeout(function () {
-      bgColor(colorBefore);
+      bgColor(opacityBefore);
    }, 500);
 
+   console.log("this is holder", holder, rotation);
    holder.style.transition = "transform 1s ease-in-out";
    holder.style.transform = `rotateY(${rotation}deg)`;
    // nav.style.transition = "transform 1s ease-in-out";
