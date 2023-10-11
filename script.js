@@ -4,8 +4,6 @@ let rotateBackWord = 0;
 const holder = document.querySelector("#holder");
 const slides = document.querySelectorAll(".rotate");
 const nav = document.querySelector(".nav");
-const colorBefore = `rgba(255, 255, 0, 1)`;
-const colorAfter = `rgba(255, 255, 0, 0)`;
 const opacityBefore = "1";
 const opacityAfter = "0";
 
@@ -13,33 +11,23 @@ console.log("out side holder", holder);
 
 const bgColor = function (opacity) {
    slides.forEach((element) => {
-      // element.style.transition = "background-color .8s ease-in-out";
       element.style.transition = "opacity 1s ease-in-out";
-      // element.style.backgroundColor = opacity;
       element.style.opacity = opacity;
    });
 };
 
 // rotate main
 function rotate(rotation) {
-   // console.log("this is target: ", event.target);
-   // rotation += 120;
-   // rotateBackWord -= 120;
-
    bgColor(opacityAfter);
    setTimeout(function () {
       bgColor(opacityBefore);
    }, 500);
 
-   console.log("this is holder", holder, rotation);
    holder.style.transition = "transform 1s ease-in-out";
    holder.style.transform = `rotateY(${rotation}deg)`;
-   // nav.style.transition = "transform 1s ease-in-out";
-   // nav.style.transform = `translate3d(0, 0, 3em) rotateY(${rotateBackWord}deg)`;
 }
 
 let btnsNav = document.querySelectorAll(".nav-link");
-console.log(btnsNav);
 for (let i = 0; i < btnsNav.length; i++) {
    btnsNav[i].addEventListener("click", function () {
       console.log("clicked on: ", i);
