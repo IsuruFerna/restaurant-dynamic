@@ -14,71 +14,69 @@
    </head>
    <body>
       <header class="vh-100">
-         <div class="animation-holder vh-100">
-            <div class="slider-holder vh-100">
-               <div id="holder" class="vh-100">
-                  <!-- contact us form -->
-                  <div class="rotate bg-img" id="left" style="--i: 1">
-                     <h1>left</h1>
-                  </div>
-                  <!-- menu idiappa -->
-                  <div class="rotate bg-img" id="right" style="--i: 3">
-                     <h1>middle</h1>
-                  </div>
-                  <!-- menu restaurant -->
-                  <div class="rotate bg-img" id="middle" style="--i: 2">
-                     <h1>right</h1>
-                  </div>
-               </div>
+         <div id="holder">
+            <!-- contact us form -->
+            <div class="rotate bg-img" id="left" style="--i: 1">
+               <h1>left</h1>
             </div>
-            <div class="nav" style="transform: translate3d(0, -200px, 1000px)">
-               <nav>
-                  <ul
-                     class="nav bg-black nav-pills nav-fill gap-2 p-1 small rounded-5 shadow-sm"
-                     id="pillNav2"
-                     role="tablist"
-                  >
-                     <li class="nav-item" role="presentation">
-                        <button
-                           class="nav-link rounded-5"
-                           id="home-tab2"
-                           data-bs-toggle="tab"
-                           type="button"
-                           role="tab"
-                           aria-selected="true"
-                        >
-                           STRING HOPPERS
-                        </button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button
-                           class="nav-link rounded-5 active"
-                           id="profile-tab2"
-                           data-bs-toggle="tab"
-                           type="button"
-                           role="tab"
-                           aria-selected="false"
-                        >
-                           RISTORANTE-PIZZERIA-BAR
-                        </button>
-                     </li>
-                     <li class="nav-item" role="presentation">
-                        <button
-                           class="nav-link rounded-5"
-                           id="contact-tab2"
-                           data-bs-toggle="tab"
-                           type="button"
-                           role="tab"
-                           aria-selected="false"
-                        >
-                           CONTACT
-                        </button>
-                     </li>
-                  </ul>
-               </nav>
+            <!-- menu idiappa -->
+            <div class="rotate bg-img" id="right" style="--i: 3">
+               <h1>middle</h1>
+            </div>
+            <!-- menu restaurant -->
+            <div class="rotate bg-img" id="middle" style="--i: 2">
+               <h1>right</h1>
             </div>
          </div>
-         <button onclick="rotate()">click</button>
+
+         <div class="nav">
+            <nav>
+               <ul
+                  class="nav bg-black nav-pills nav-fill gap-2 p-1 small rounded-5 shadow-sm"
+                  id="pillNav2"
+                  role="tablist"
+               >
+                  <li class="nav-item" role="presentation">
+                     <button
+                        class="nav-link rounded-5"
+                        id="home-tab2"
+                        data-bs-toggle="tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                     >
+                        STRING HOPPERS
+                     </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                     <button
+                        class="nav-link rounded-5 active"
+                        id="profile-tab2"
+                        data-bs-toggle="tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                     >
+                        RISTORANTE-PIZZERIA-BAR
+                     </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                     <button
+                        class="nav-link rounded-5"
+                        id="contact-tab2"
+                        data-bs-toggle="tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                     >
+                        CONTACT
+                     </button>
+                  </li>
+               </ul>
+            </nav>
+         </div>
+
+         <button type="button" onclick="rotate()">click</button>
       </header>
       <main>
          <div class="container">

@@ -21,8 +21,8 @@ const bgColor = function (opacity) {
 // rotate main
 function rotate(rotation) {
    // console.log("this is target: ", event.target);
-   // rotation += 120;
-   // rotateBackWord -= 120;
+   rotation += 120;
+   rotateBackWord -= 120;
 
    bgColor(opacityAfter);
    setTimeout(function () {
@@ -37,20 +37,20 @@ function rotate(rotation) {
 
 let btnsNav = document.querySelectorAll(".nav-link");
 console.log(btnsNav);
-for (let i = 0; i < btnsNav.length; i++) {
-   btnsNav[i].addEventListener("click", function () {
-      console.log("clicked on: ", i);
-      let rotation = 0;
-      if (i === 0) {
-         rotation = -120;
-      } else if (i === 1) {
-         rotation = 0;
-      } else {
-         rotation = 120;
-      }
-      rotate(rotation);
-   });
-}
+// for (let i = 0; i < btnsNav.length; i++) {
+//    btnsNav[i].addEventListener("click", function () {
+//       console.log("clicked on: ", i);
+//       let rotation = 0;
+//       if (i === 0) {
+//          rotation = -120;
+//       } else if (i === 1) {
+//          rotation = 0;
+//       } else {
+//          rotation = 120;
+//       }
+//       rotate(rotation);
+//    });
+// }
 
 document.addEventListener("click", (e) => {
    console.log(e.target);
