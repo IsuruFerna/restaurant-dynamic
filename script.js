@@ -45,4 +45,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
    // load menu as JSON so lately I can use data via API
    const data = JSON.parse(menu_data);
+
+   // itterate through main menu (Pizza, Sri Lankan, Bibite...)
+   for (let obj in data) {
+      data[obj].forEach((element) => {
+         // render menu pizza
+         if (obj === "pizza") {
+            // Pizze classiche
+            if (element.type === "classiche") {
+               const leClassiche = document.getElementById("le-classiche");
+               renderEachMenuItem(element, leClassiche);
+            }
+         }
+      });
+   }
 });
+
+function renderEachMenuItem(element, appendIn) {
+   const ingredient = element.ingredient;
+   const eachItem = document.createElement("div");
+   eachItem.classList.add("row", "row-cols-2", "text-light");
+   eachItem.innerHTML = `
+   <div class="col col-9">
+      <p class="fs-6 mb-0">${element.name.toUpperCase()}</p>
+      <p class="fs-7 ps-2 text-uppercase">
+         ${ingredient}
+      </p>
+   </div>
+   <div class="col col-3 text-end ">
+      <p class="fs-5">${element.price} €</p>
+   </div>
+   `;
+
+   appendIn.children[0].appendChild(eachItem);
+}

@@ -34,6 +34,10 @@ h2 {
   color: rgb(223, 191, 62) !important;
 }
 
+.fs-7 {
+  font-size: 0.7rem;
+}
+
 header {
   position: relative;
 }

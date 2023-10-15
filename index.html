@@ -78,10 +78,62 @@
       </header>
 
       <main>
-         <div class="container">
-            <div class="row">
+         <div class="container p-4">
+            <div class="row row-cols-1 mb-3 mt-4">
                <div class="col">
                   <h2 class="secondary-title text-center">Pizza Menu</h2>
+               </div>
+            </div>
+
+            <!-- le classiche  -->
+            <div id="le-classiche" class="row row-cols-1 row-cols-md-2">
+               <div class="col col-md-8">
+                  <h3
+                     class="border-light border-bottom border-2 pb-2 mb-3 text-light"
+                  >
+                     LE CLASSICHE
+                  </h3>
+                  <!-- this this the raw version of what dynamically creating -->
+
+                  <!-- <div class="row row-cols-2 text-light">
+                     <div class="col col-9">
+                        <p class="fs-5 mb-1">Marina</p>
+                        <p class="fs-7 ps-3">
+                           Lorem ipsum dolor sit amet consectetur adipisicing
+                           elit. Fugit adipisci facere quo saepe placeat!
+                           Explicabo nesciunt, ullam quaerat voluptatibus
+                           molestias cupiditate saepe consectetur accusantium
+                           eius ipsam tenetur voluptatum praesentium laudantium.
+                        </p>
+                     </div>
+                     <div class="col col-3 text-end">
+                        <p class="fs-5">4.00 €</p>
+                     </div>
+                  </div> -->
+               </div>
+               <div class="col col-md-4">
+                  <img
+                     src="./assets/img/fried-rice.png"
+                     class="img-fluid"
+                     alt="photo of a fried rice"
+                  />
+               </div>
+            </div>
+            <!-- le bianche  -->
+            <div id="le-classiche" class="row row-cols-1 row-cols-md-2">
+               <div class="col col-md-8">
+                  <h3
+                     class="border-light border-bottom border-2 pb-2 mb-3 text-light"
+                  >
+                     PIZZE BIANCHE
+                  </h3>
+               </div>
+               <div class="col col-md-4">
+                  <img
+                     src="./assets/img/fried-rice.png"
+                     class="img-fluid"
+                     alt="photo of a fried rice"
+                  />
                </div>
             </div>
          </div>
@@ -92,7 +144,6 @@
          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
          crossorigin="anonymous"
       ></script>
-      <!-- <script  src="menu.js"></script> -->
       <script type="module" src="script.js"></script>
    </body>
 </html>
