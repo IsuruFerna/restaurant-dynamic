@@ -1,60 +1,81 @@
-let rotation = 0;
-let rotateBackWord = 0;
+import { menu_data } from "./menu.js";
 
-const holder = document.querySelector("#holder");
-const slides = document.querySelectorAll(".rotate");
-const nav = document.querySelector(".nav");
-const colorBefore = `rgba(255, 255, 0, 1)`;
-const colorAfter = `rgba(255, 255, 0, 0)`;
-const opacityBefore = "1";
-const opacityAfter = "0";
+document.addEventListener("DOMContentLoaded", function () {
+   const holder = document.querySelector("#holder");
+   const slides = document.querySelectorAll(".rotate");
+   const nav = document.querySelector(".nav");
+   const opacityBefore = "1";
+   const opacityAfter = "0";
 
-console.log("out side holder", holder);
+   // change the opacity of BG when it rotates
+   const bgColor = function (opacity) {
+      slides.forEach((element) => {
+         element.style.transition = "opacity 1s ease-in-out";
+         element.style.opacity = opacity;
+      });
+   };
 
-const bgColor = function (opacity) {
-   slides.forEach((element) => {
-      // element.style.transition = "background-color .8s ease-in-out";
-      element.style.transition = "opacity 1s ease-in-out";
-      // element.style.backgroundColor = opacity;
-      element.style.opacity = opacity;
-   });
-};
+   // rotate main
+   function rotate(rotation) {
+      bgColor(opacityAfter);
+      setTimeout(function () {
+         bgColor(opacityBefore);
+      }, 500);
 
-// rotate main
-function rotate(rotation) {
-   // console.log("this is target: ", event.target);
-   // rotation += 120;
-   // rotateBackWord -= 120;
+      holder.style.transition = "transform 1s ease-in-out";
+      holder.style.transform = `rotateY(${rotation}deg)`;
+   }
 
-   bgColor(opacityAfter);
-   setTimeout(function () {
-      bgColor(opacityBefore);
-   }, 500);
+   // main nav which rorates when clicks
+   let btnsNav = document.querySelectorAll(".nav-link");
+   for (let i = 0; i < btnsNav.length; i++) {
+      btnsNav[i].addEventListener("click", function () {
+         console.log("clicked on: ", i);
+         let rotation = 0;
+         if (i === 0) {
+            rotation = -120;
+         } else if (i === 1) {
+            rotation = 0;
+         } else {
+            rotation = 120;
+         }
+         rotate(rotation);
+      });
+   }
 
-   console.log("this is holder", holder, rotation);
-   holder.style.transition = "transform 1s ease-in-out";
-   holder.style.transform = `rotateY(${rotation}deg)`;
-   // nav.style.transition = "transform 1s ease-in-out";
-   // nav.style.transform = `translate3d(0, 0, 3em) rotateY(${rotateBackWord}deg)`;
-}
+   // load menu as JSON so lately I can use data via API
+   const data = JSON.parse(menu_data);
 
-let btnsNav = document.querySelectorAll(".nav-link");
-console.log(btnsNav);
-for (let i = 0; i < btnsNav.length; i++) {
-   btnsNav[i].addEventListener("click", function () {
-      console.log("clicked on: ", i);
-      let rotation = 0;
-      if (i === 0) {
-         rotation = -120;
-      } else if (i === 1) {
-         rotation = 0;
-      } else {
-         rotation = 120;
-      }
-      rotate(rotation);
-   });
-}
-
-document.addEventListener("click", (e) => {
-   console.log(e.target);
+   // itterate through main menu (Pizza, Sri Lankan, Bibite...)
+   for (let obj in data) {
+      data[obj].forEach((element) => {
+         // render menu pizza
+         if (obj === "pizza") {
+            // Pizze classiche
+            if (element.type === "classiche") {
+               const leClassiche = document.getElementById("le-classiche");
+               renderEachMenuItem(element, leClassiche);
+            }
+         }
+      });
+   }
 });
+
+function renderEachMenuItem(element, appendIn) {
+   const ingredient = element.ingredient;
+   const eachItem = document.createElement("div");
+   eachItem.classList.add("row", "row-cols-2", "text-light");
+   eachItem.innerHTML = `
+   <div class="col col-9">
+      <p class="fs-6 mb-0">${element.name.toUpperCase()}</p>
+      <p class="fs-7 ps-2 text-uppercase">
+         ${ingredient}
+      </p>
+   </div>
+   <div class="col col-3 text-end ">
+      <p class="fs-5">${element.price} €</p>
+   </div>
+   `;
+
+   appendIn.children[0].appendChild(eachItem);
+}
