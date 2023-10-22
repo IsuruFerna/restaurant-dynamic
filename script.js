@@ -70,6 +70,62 @@ document.addEventListener("DOMContentLoaded", function () {
                const rice = document.getElementById("rice");
                renderEachMenuItem(element, rice);
             }
+            // batter
+            if (element.type === "batter") {
+               const batter = document.getElementById("batter");
+               renderEachMenuItem(element, batter);
+            }
+            // noodles
+            if (element.type === "noodles") {
+               const noodles = document.getElementById("noodles");
+               renderEachMenuItem(element, noodles);
+            }
+            // chili
+            if (element.type === "chili") {
+               const chili = document.getElementById("chili");
+               renderEachMenuItem(element, chili);
+            }
+            // kottu
+            if (element.type === "kottu") {
+               const kottu = document.getElementById("kottu");
+               renderEachMenuItem(element, kottu);
+            }
+            // fried
+            if (element.type === "fried") {
+               const fried = document.getElementById("fried");
+               renderEachMenuItem(element, fried);
+            }
+            // devilled
+            if (element.type === "devilled") {
+               const devilled = document.getElementById("devilled");
+               renderEachMenuItem(element, devilled);
+            }
+            // stew
+            if (element.type === "stew") {
+               const stew = document.getElementById("stew");
+               renderEachMenuItem(element, stew);
+            }
+            // short-eats
+            if (element.type === "short eats") {
+               const shortEats = document.getElementById("short-eats");
+               renderEachMenuItem(element, shortEats);
+            }
+         }
+         // render menu frutta
+         if (obj === "frutta") {
+            // frutta
+            if (element.type === "frutta") {
+               const frutta = document.getElementById("frutta");
+               renderEachMenuItem(element, frutta);
+            }
+         }
+         // render menu dessert
+         if (obj === "dessert") {
+            // desert
+            if (element.type === "dessert") {
+               const dessert = document.getElementById("dessert");
+               renderEachMenuItem(element, dessert);
+            }
          }
       });
    }
