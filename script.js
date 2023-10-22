@@ -6,6 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
    const nav = document.querySelector(".nav");
    const opacityBefore = "1";
    const opacityAfter = "0";
+   const pageRestaurant = document.getElementById("ristorante");
+   const pageStringHoppers = document.getElementById("string-hoppers");
+   // const pageContact = document.getElementById("form-contact");
+
+   // set page visibility at default
+   pageRestaurant.classList.remove("d-none");
+   pageStringHoppers.classList.add("d-none");
+   // pageContact.classList.add("d-none");
 
    // change the opacity of BG when it rotates
    const bgColor = function (opacity) {
@@ -27,16 +35,26 @@ document.addEventListener("DOMContentLoaded", function () {
    }
 
    // main nav which rorates when clicks
+   // set visibility of the divs
    let btnsNav = document.querySelectorAll(".nav-link");
    for (let i = 0; i < btnsNav.length; i++) {
       btnsNav[i].addEventListener("click", function () {
          console.log("clicked on: ", i);
          let rotation = 0;
          if (i === 0) {
+            pageStringHoppers.classList.remove("d-none");
+            pageRestaurant.classList.add("d-none");
+            // pageContact.classList.add("d-none");
             rotation = -120;
          } else if (i === 1) {
+            pageStringHoppers.classList.add("d-none");
+            pageRestaurant.classList.remove("d-none");
+            // pageContact.classList.add("d-none");
             rotation = 0;
          } else {
+            pageStringHoppers.classList.add("d-none");
+            pageRestaurant.classList.add("d-none");
+            // pageContact.classList.remove("d-none");
             rotation = 120;
          }
          rotate(rotation);
@@ -125,6 +143,14 @@ document.addEventListener("DOMContentLoaded", function () {
             if (element.type === "dessert") {
                const dessert = document.getElementById("dessert");
                renderEachMenuItem(element, dessert);
+            }
+         }
+         // render ice cream
+         if (obj === "iceCream") {
+            // desert
+            if (element.type === "ice cream") {
+               const iceCream = document.getElementById("ice-cream");
+               renderEachMenuItem(element, iceCream);
             }
          }
       });
