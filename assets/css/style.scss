@@ -23,6 +23,12 @@ body {
 h1 {
    font-family: "Roboto", sans-serif;
    font-weight: 800;
+   color: rgba(223, 191, 62, 1) !important;
+   font-style: italic;
+
+   @media screen and (max-width: 425px) {
+      font-size: 1.5em;
+   }
 }
 
 .secondary-title {
