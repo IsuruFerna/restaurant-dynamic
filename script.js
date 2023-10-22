@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
    // load menu as JSON so lately I can use data via API
    const data = JSON.parse(menu_data);
+   console.log("this is menu: ", data);
 
    // itterate through main menu (Pizza, Sri Lankan, Bibite...)
    for (let obj in data) {
@@ -56,26 +57,65 @@ document.addEventListener("DOMContentLoaded", function () {
                const leClassiche = document.getElementById("le-classiche");
                renderEachMenuItem(element, leClassiche);
             }
+            // Pizze bianche
+            if (element.type === "pizze bianche") {
+               const pizzeBianche = document.getElementById("pizze-bianche");
+               renderEachMenuItem(element, pizzeBianche);
+            }
+         }
+         // render Sri Lankan menu
+         if (obj === "sri_lankan") {
+            // rice
+            if (element.type === "rice") {
+               const rice = document.getElementById("rice");
+               renderEachMenuItem(element, rice);
+            }
          }
       });
    }
 });
 
+// render menu item into DOM
 function renderEachMenuItem(element, appendIn) {
-   const ingredient = element.ingredient;
+   // const ingredient = ingredients(element);
    const eachItem = document.createElement("div");
-   eachItem.classList.add("row", "row-cols-2", "text-light");
+   eachItem.classList.add("row", "row-cols-2", "text-light", "ps-3", "mb-3");
    eachItem.innerHTML = `
-   <div class="col col-9">
-      <p class="fs-6 mb-0">${element.name.toUpperCase()}</p>
-      <p class="fs-7 ps-2 text-uppercase">
-         ${ingredient}
-      </p>
+   <div class="col col-8">
+      <p class="fs-6 mb-0 fw-bold">${element.name.toUpperCase()}</p>
+      ${ingredients(element)}
    </div>
-   <div class="col col-3 text-end ">
-      <p class="fs-5">${element.price} €</p>
+   <div class="col col-4 text-end ">
+      <p class="fs-7">${element.price} €</p>
    </div>
    `;
 
    appendIn.children[0].appendChild(eachItem);
+}
+
+// render ingredints with a space
+function ingredients(element) {
+   let ingredient = [];
+
+   // if there are not multiple arrays make a "<p></p>" tag as a string
+   if (typeof element.ingredient[0] === "string") {
+      element.ingredient.forEach((item) => {
+         item = " " + item;
+         ingredient.push(item);
+      });
+
+      return `<p class="fs-7 ps-2  mb-0 text-uppercase">${ingredient}</p>`;
+   } else {
+      // if there are multiple arrays make multiple "<p></p>" tags
+      let ingredientInnerHTML = "";
+      element.ingredient.forEach((arr, index) => {
+         arr.forEach((item) => {
+            item = " " + item;
+            ingredient.push(item);
+         });
+         ingredientInnerHTML += `<p class="fs-7 ps-2 mb-0 text-uppercase">${ingredient}</p>`;
+         ingredient = [];
+      });
+      return ingredientInnerHTML;
+   }
 }
