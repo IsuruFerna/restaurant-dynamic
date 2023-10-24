@@ -129,6 +129,37 @@ document.addEventListener("DOMContentLoaded", function () {
                renderEachMenuItem(element, shortEats);
             }
          }
+         // render menu bibite
+         if (obj === "bibite") {
+            // birre-alla-spina
+            if (element.type === "birre alla spina") {
+               const birreAllaSpina =
+                  document.getElementById("birre-alla-spina");
+               renderEachDrink(element, birreAllaSpina);
+            }
+            // vino-rosso-e-bianco-frizzante
+            if (element.type === "vino rosso e bianco frizzante alla spina") {
+               const vinoRossoBianco = document.getElementById(
+                  "vino-rosso-e-bianco-frizzante"
+               );
+               renderEachDrink(element, vinoRossoBianco);
+            }
+            // birre
+            if (element.type === "birre") {
+               const birre = document.getElementById("birre");
+               renderEachDrink(element, birre);
+            }
+            // vini
+            if (element.type === "vini") {
+               const vini = document.getElementById("vini");
+               renderEachDrink(element, vini);
+            }
+            // bibite
+            if (element.type === "bibite") {
+               const bibite = document.getElementById("bibite");
+               renderEachDrink(element, bibite);
+            }
+         }
          // render menu frutta
          if (obj === "frutta") {
             // frutta
@@ -169,6 +200,22 @@ function renderEachMenuItem(element, appendIn) {
    </div>
    <div class="col col-4 text-end ">
       <p class="fs-7">${element.price} €</p>
+   </div>
+   `;
+
+   appendIn.children[0].appendChild(eachItem);
+}
+function renderEachDrink(element, appendIn) {
+   // const ingredient = ingredients(element);
+   console.log("drinks: ", element);
+   const eachItem = document.createElement("div");
+   eachItem.classList.add("row", "row-cols-2", "text-light", "ps-3", "mb-0");
+   eachItem.innerHTML = `
+   <div class="col col-8">
+      <p class="fs-6 mb-0 text-uppercase">${element.name} ${element.size} ${element.volume}</p>
+   </div>
+   <div class="col col-4 text-end ">
+      <p class="fs-6 mb-0">${element.price} €</p>
    </div>
    `;
 
