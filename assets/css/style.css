@@ -139,9 +139,6 @@ header {
 }
 
 /******************** menu-main-section-end ***********************/
-header .bg-img {
-  background-color: blue !important;
-}
 header .nav {
   position: absolute;
   transform: translate(-50%, -50%);
